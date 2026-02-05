@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#hero">Início</a></li>
-                <li><a href="#dor">A Dor</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
                 <li><a href="#produtos">Produtos</a></li>
                 <li><a href="#clientes">Clientes</a></li>
                 <li><a href="#tecnologias">Tecnologias</a></li>
@@ -36,12 +37,13 @@
     <!-- Seção Hero -->
     <section id="hero" class="hero">
         <div class="hero-image-wrapper">
-            <img src="img/hero.png" alt="Hero" class="hero-image">
+            <img src="img/hero.png" alt="Hero" class="hero-image active">
+            <img src="img/hero2.png" alt="Hero 2" class="hero-image">
         </div>
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Transforme Sua Presença Digital</h1>
+                <h1 class="hero-title">Presença digital na velocidade da luz</h1>
                 <p class="hero-subtitle">Soluções inovadoras que impulsionam seu negócio para o próximo nível</p>
                 <div class="hero-buttons">
                     <a href="#contato" class="btn btn-primary">Começar Agora</a>
@@ -51,30 +53,51 @@
         </div>
     </section>
 
-    <!-- Seção A Dor -->
-    <section id="dor" class="dor">
+    <!-- Seção Diferenciais -->
+    <section id="diferenciais" class="diferenciais">
         <div class="container">
-            <h2 class="section-title">Você Já Passou Por Isso?</h2>
-            <div class="dor-grid">
-                <div class="dor-card">
-                    <div class="dor-icon">⚠️</div>
-                    <h3>Falta de Visibilidade Online</h3>
-                    <p>Seu negócio não aparece nas buscas e você perde clientes para a concorrência</p>
+            <h2 class="section-title">Diferenciais</h2>
+            <div class="diferenciais-grid">
+                <!-- Card 1: Preço -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">account_balance_wallet</span>
+                    <h3 class="diferencial-title">Investimento Inteligente</h3>
+                    <p class="diferencial-text">Democratizamos a tecnologia de ponta. Por apenas R$ 200, você tem acesso a soluções que antes custavam milhares. Tecnologia de elite ao alcance do seu negócio.</p>
                 </div>
-                <div class="dor-card">
-                    <div class="dor-icon">💸</div>
-                    <h3>Investimentos Sem Retorno</h3>
-                    <p>Gastou dinheiro em marketing digital mas não viu resultados concretos</p>
+
+                <!-- Card 2: Rapidez -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">flash_on</span>
+                    <h3 class="diferencial-title">Velocidade de Execução</h3>
+                    <p class="diferencial-text">Enquanto agências tradicionais levam meses, nós entregamos em menos de 7 dias. No digital, velocidade é vantagem competitiva.</p>
                 </div>
-                <div class="dor-card">
-                    <div class="dor-icon">⏰</div>
-                    <h3>Processos Manuais e Lentos</h3>
-                    <p>Sua equipe perde tempo com tarefas repetitivas que poderiam ser automatizadas</p>
+
+                <!-- Card 3: Personalização -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">palette</span>
+                    <h3 class="diferencial-title">Soluções Sob Medida</h3>
+                    <p class="diferencial-text">Cada negócio é único. Por isso, cada design e função são pensados exclusivamente para você. Nada de templates genéricos.</p>
                 </div>
-                <div class="dor-card">
-                    <div class="dor-icon">📊</div>
-                    <h3>Falta de Dados e Métricas</h3>
-                    <p>Tomando decisões no escuro sem entender o que realmente funciona</p>
+
+                <!-- Card 4: ERP -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">bar_chart</span>
+                    <h3 class="diferencial-title">Gestão Sem Caos</h3>
+                    <p class="diferencial-text">Controle total: funcionários, clientes e serviços em um só lugar. Sistema adaptável que cresce com seu negócio.</p>
+                </div>
+
+                <!-- Card 5: Vantagem -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">trending_up</span>
+                    <h3 class="diferencial-title">Autoridade e Vendas</h3>
+                    <p class="diferencial-text">Sites profissionais aumentam vendas em <strong class="highlight">40%</strong> e geram confiança instantânea. Seja encontrado, seja escolhido.</p>
+                </div>
+
+                <!-- Card 6: Suporte -->
+                <div class="diferencial-card">
+                    <span class="material-icons diferencial-icon">support_agent</span>
+                    <h3 class="diferencial-title">Suporte Sem Traumas</h3>
+                    <p class="diferencial-text">Manutenção inclusiva e suporte direto. Nós cuidamos do código para você cuidar do lucro.</p>
                 </div>
             </div>
         </div>

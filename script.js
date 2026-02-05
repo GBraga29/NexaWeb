@@ -83,7 +83,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Aplicar animação aos elementos
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.dor-card, .produto-card, .cliente-card, .tech-item, .stat-item');
+    const animateElements = document.querySelectorAll('.diferencial-card, .produto-card, .cliente-card, .tech-item, .stat-item');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -134,14 +134,33 @@ if (contatoForm) {
     });
 }
 
-// Efeito parallax suave na imagem do hero
+// Carrossel de imagens do hero
+const heroImages = document.querySelectorAll('.hero-image');
+let currentImageIndex = 0;
+
+const changeHeroImage = () => {
+    // Remove a classe active de todas as imagens
+    heroImages.forEach(img => img.classList.remove('active'));
+    
+    // Adiciona a classe active na próxima imagem
+    currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+    heroImages[currentImageIndex].classList.add('active');
+};
+
+// Inicia o carrossel a cada 10 segundos
+if (heroImages.length > 0) {
+    setInterval(changeHeroImage, 10000);
+}
+
+// Efeito parallax suave na imagem ativa do hero
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage && scrolled < window.innerHeight) {
-        heroImage.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
+    const activeImage = document.querySelector('.hero-image.active');
+    if (activeImage && scrolled < window.innerHeight) {
+        activeImage.style.transform = `translateY(${scrolled * 0.3}px) scale(1)`;
     }
 });
+
 
 // Contador animado para estatísticas
 const animateCounter = (element, target, duration = 2000) => {
