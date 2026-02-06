@@ -204,3 +204,69 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(item);
     });
 });
+
+// Carrossel de Produtos
+const produtosCarousel = () => {
+    const track = document.getElementById('produtosCarousel');
+    const cards = track.querySelectorAll('.produto-card-carousel');
+    const container = track.parentElement;
+    
+    if (!track || cards.length === 0) return;
+    
+    // Começar pelo card central (índice 1)
+    let currentIndex = 1;
+    const totalCards = cards.length;
+    const gap = 32; // 2rem = 32px
+    
+    // Função para calcular o deslocamento centralizando o card
+    const updateCarousel = () => {
+        if (cards.length === 0) return;
+        
+        const containerWidth = container.offsetWidth;
+        const cardWidth = cards[0].offsetWidth;
+        const cardWithGap = cardWidth + gap;
+        const trackPadding = 32; // 2rem = 32px (padding do track)
+        
+        // Calcular offset para centralizar o card atual
+        // Centralizar: containerWidth/2 - cardWidth/2 - (currentIndex * cardWithGap) - trackPadding
+        const offset = (containerWidth / 2) - (cardWidth / 2) - (currentIndex * cardWithGap) - trackPadding;
+        
+        track.style.transform = `translateX(${offset}px)`;
+        
+        // Atualizar classes active
+        cards.forEach((card, index) => {
+            card.classList.remove('active');
+            if (index === currentIndex) {
+                card.classList.add('active');
+            }
+        });
+    };
+    
+    // Adicionar event listeners para clique nos cards
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            if (index !== currentIndex) {
+                currentIndex = index;
+                updateCarousel();
+            }
+        });
+    });
+    
+    // Inicializar carrossel
+    // Aguardar um frame para garantir que os elementos estão renderizados
+    requestAnimationFrame(() => {
+        updateCarousel();
+    });
+    
+    // Recalcular em resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateCarousel();
+        }, 250);
+    });
+};
+
+// Inicializar carrossel quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', produtosCarousel);
