@@ -503,6 +503,93 @@ section {
     background: var(--midnight-void);
 }
 
+.clientes-video-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.clientes-video-container {
+    max-width: 900px;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clientes-video-container:hover {
+    border-color: var(--electric-cyan);
+    box-shadow: var(--shadow-glow);
+}
+
+.clientes-video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.clientes-video-caption {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    border-top: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.clientes-projeto-desc {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.clientes-projeto-texto {
+    color: var(--white);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.clientes-projeto-tagline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.clientes-projeto-icon {
+    font-size: 1.25rem;
+    color: var(--electric-cyan);
+}
+
+.clientes-projeto-vias {
+    margin-left: auto;
+    color: var(--electric-cyan);
+    font-weight: 600;
+}
+
+.clientes-projeto-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.clientes-tag {
+    background: var(--gradient);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .clientes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -563,11 +650,16 @@ section {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 240, 255, 0.2);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
 }
 
 .tech-item:hover {
@@ -580,7 +672,7 @@ section {
 .tech-name {
     font-family: 'Sora', sans-serif;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--white);
     transition: color 0.3s ease;
 }
@@ -589,22 +681,172 @@ section {
     color: var(--electric-cyan);
 }
 
+.tech-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-light);
+    margin: 0;
+    max-width: 100%;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.tech-item:hover .tech-desc {
+    opacity: 1;
+    max-height: 120px;
+}
+
 /* Seção Quem Somos */
 .quem-somos {
     background: var(--midnight-void);
 }
 
-.quem-somos-text {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+.quem-somos .section-title {
+    margin-bottom: 4rem;
 }
 
-.quem-somos-text p {
-    font-size: 1.1rem;
-    color: var(--text-light);
+.quem-somos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.quem-somos-col-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.quem-somos-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.quem-somos-subtitulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--electric-cyan);
     margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.quem-somos-paragrafo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-light);
     line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.quem-somos-destaque {
+    color: var(--electric-cyan);
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+}
+
+.quem-somos-separador {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), rgba(112, 0, 255, 0.4), transparent);
+    margin: 1.5rem 0;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.quem-somos-bloco-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.quem-somos-lista {
+    list-style: none;
+    margin: 0 0 1.25rem 0;
+    padding: 0;
+}
+
+.quem-somos-lista li {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+}
+
+.quem-somos-citacao {
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.7;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(var(--midnight-void), var(--midnight-void)) padding-box,
+                linear-gradient(135deg, var(--electric-cyan), var(--hyper-purple)) border-box;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.25),
+                0 0 30px rgba(112, 0, 255, 0.15);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.quem-somos-citacao:hover {
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5),
+                0 0 50px rgba(112, 0, 255, 0.3),
+                0 0 60px rgba(0, 240, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.quem-somos-col-visual {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.quem-somos-foto-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 6px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--electric-cyan), var(--hyper-purple));
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.25), 0 0 50px rgba(112, 0, 255, 0.15);
+}
+
+.quem-somos-foto-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quem-somos-foto-placeholder .quem-somos-foto-icon {
+    font-size: 4rem;
+    color: rgba(0, 240, 255, 0.4);
+}
+
+.quem-somos-foto-texto {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
 }
 
 .stats {
@@ -792,6 +1034,15 @@ section {
 
     .contato-content {
         grid-template-columns: 1fr;
+    }
+
+    .quem-somos-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .quem-somos-titulo {
+        font-size: 1.5rem;
     }
 
     .diferenciais-grid {
