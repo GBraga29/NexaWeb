@@ -1,0 +1,355 @@
+/* Página Simulador de Orçamento */
+.simulador-page {
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+.simulador-main {
+    min-height: 100vh;
+}
+
+.simulador-container {
+    max-width: 1000px;
+}
+
+.simulador-tagline {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.simulador-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--white);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    background: linear-gradient(135deg, var(--white), var(--electric-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.simulador-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.simulador-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Cards do formulário */
+.simulador-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.simulador-card:hover {
+    border-color: rgba(0, 240, 255, 0.4);
+}
+
+.simulador-base {
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.simulador-card-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--electric-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.simulador-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.simulador-card-texto {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.simulador-card-preco {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--white);
+}
+
+/* Opções (checkboxes estilizados) */
+.simulador-opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.simulador-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.simulador-option:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.simulador-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.simulador-option-box {
+    flex-shrink: 0;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(0, 240, 255, 0.4);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.simulador-option input:checked + .simulador-option-box {
+    background: var(--electric-cyan);
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+
+.simulador-option input:checked + .simulador-option-box::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid var(--midnight-void);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.simulador-option input:checked ~ .simulador-option-text,
+.simulador-option input:checked ~ .simulador-option-valor {
+    color: var(--white);
+}
+
+.simulador-option:has(input:checked) {
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.simulador-option-text {
+    flex: 1;
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.simulador-option-valor {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--electric-cyan);
+}
+
+/* Input numérico */
+.simulador-input-wrap {
+    margin-top: 1rem;
+}
+
+.simulador-input {
+    width: 100%;
+    max-width: 140px;
+    padding: 0.875rem 1rem;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.simulador-input:focus {
+    outline: none;
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.simulador-input-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+/* Sidebar Resumo (sticky) */
+.simulador-resumo {
+    position: sticky;
+    top: 120px;
+}
+
+.simulador-resumo-inner {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.1);
+}
+
+.simulador-resumo-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--electric-cyan);
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.simulador-resumo-linhas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.simulador-resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.simulador-resumo-linha strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    color: var(--electric-cyan);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.simulador-btn-whatsapp {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Resumo fixo no rodapé (mobile) */
+.simulador-resumo-fixo {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11, 14, 20, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 240, 255, 0.25);
+    padding: 1rem 1.25rem;
+    z-index: 900;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.simulador-resumo-fixo-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.simulador-resumo-fixo-inner > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.simulador-resumo-fixo-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.simulador-resumo-fixo-inner strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    color: var(--electric-cyan);
+}
+
+.btn-small {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .simulador-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .simulador-resumo {
+        position: static;
+        order: -1;
+    }
+
+    .simulador-resumo-inner {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .simulador-page {
+        padding-bottom: 100px;
+    }
+
+    .simulador-titulo {
+        font-size: 1.75rem;
+    }
+
+    .simulador-resumo {
+        display: none;
+    }
+
+    .simulador-resumo-fixo {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .simulador-resumo-fixo-inner {
+        flex-wrap: wrap;
+    }
+
+    .simulador-resumo-fixo-inner .btn {
+        width: 100%;
+        order: 3;
+        margin-top: 0.5rem;
+    }
+}

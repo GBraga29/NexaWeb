@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Orçamento | NexaWeb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="simulador.css">
+    <link rel="icon" type="image/png" href="img/logo_sem_texto.png">
+</head>
+<body class="simulador-page">
+    <!-- Navegação (mesmo do site principal) -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><img src="img/logo.png" alt="NexaWeb" class="logo-img"></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#hero">Início</a></li>
+                <li><a href="index.html#diferenciais">Diferenciais</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="index.html#clientes">Clientes</a></li>
+                <li><a href="index.html#tecnologias">Tecnologias</a></li>
+                <li><a href="index.html#quem-somos">Quem Somos</a></li>
+                <li><a href="index.html#nossos-valores">Nossos Valores</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="simulador-main">
+        <div class="container simulador-container">
+            <p class="simulador-tagline">Sem letras miúdas. Você monta o que precisa, nós entregamos a engenharia.</p>
+            <h1 class="simulador-titulo">Simule seu Projeto Digital</h1>
+
+            <div class="simulador-layout">
+                <div class="simulador-form-wrap">
+                    <!-- Pacote Base (sempre selecionado) -->
+                    <section class="simulador-card simulador-base">
+                        <h2 class="simulador-card-titulo">Estrutura Essencial</h2>
+                        <p class="simulador-card-desc">Inclui: Hero, Header, Footer, Quem Somos, Produtos e Contato.</p>
+                        <p class="simulador-card-preco">R$ 349,99 (setup) + R$ 39,99/mês</p>
+                    </section>
+
+                    <!-- Adicionais -->
+                    <section class="simulador-card">
+                        <h2 class="simulador-card-titulo">Adicionais</h2>
+                        <div class="simulador-opcoes">
+                            <label class="simulador-option">
+                                <input type="checkbox" name="blog" data-setup="90" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">Blog / Notícias</span>
+                                <span class="simulador-option-valor">+ R$ 90,00</span>
+                            </label>
+                            <label class="simulador-option">
+                                <input type="checkbox" name="galeria" data-setup="60" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">Galeria de Fotos / Portfólio</span>
+                                <span class="simulador-option-valor">+ R$ 60,00</span>
+                            </label>
+                            <label class="simulador-option">
+                                <input type="checkbox" name="faq" data-setup="40" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">FAQ (Perguntas Frequentes)</span>
+                                <span class="simulador-option-valor">+ R$ 40,00</span>
+                            </label>
+                            <label class="simulador-option">
+                                <input type="checkbox" name="depoimentos" data-setup="50" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">Depoimentos de Clientes</span>
+                                <span class="simulador-option-valor">+ R$ 50,00</span>
+                            </label>
+                            <label class="simulador-option">
+                                <input type="checkbox" name="erp" data-setup="120" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">Integração Área do Cliente (ERP)</span>
+                                <span class="simulador-option-valor">+ R$ 120,00</span>
+                            </label>
+                            <label class="simulador-option">
+                                <input type="checkbox" name="seo" data-setup="100" data-mensal="0">
+                                <span class="simulador-option-box"></span>
+                                <span class="simulador-option-text">SEO Avançado</span>
+                                <span class="simulador-option-valor">+ R$ 100,00</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Páginas extras -->
+                    <section class="simulador-card">
+                        <h2 class="simulador-card-titulo">Páginas Extras Separadas</h2>
+                        <p class="simulador-card-desc">+ R$ 150,00 cada</p>
+                        <p class="simulador-card-texto">Se alguma seção do site precisar sair do básico e ganhar mais conteúdo ou detalhes, podemos transformá-la em uma página dedicada. Cada página extra é cobrada separadamente.</p>
+                        <div class="simulador-input-wrap">
+                            <input type="number" id="paginas-extras" class="simulador-input" min="0" max="20" value="0" data-setup="150">
+                            <label for="paginas-extras" class="simulador-input-label">Quantidade</label>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar / Resumo (sticky desktop) -->
+                <aside class="simulador-resumo" id="simuladorResumo">
+                    <div class="simulador-resumo-inner">
+                        <h3 class="simulador-resumo-titulo">Resumo</h3>
+                        <div class="simulador-resumo-linhas">
+                            <div class="simulador-resumo-linha">
+                                <span>Total de Setup (único)</span>
+                                <strong id="totalSetup">R$ 349,99</strong>
+                            </div>
+                            <div class="simulador-resumo-linha">
+                                <span>Total Mensal (recorrência)</span>
+                                <strong id="totalMensal">R$ 39,99</strong>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511997983481?text=Ol%C3%A1!%20Fiz%20uma%20simula%C3%A7%C3%A3o%20no%20site%20NexaWeb." id="btnWhatsApp" class="btn btn-primary simulador-btn-whatsapp" target="_blank" rel="noopener">
+                            Enviar Simulação para o WhatsApp
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Resumo fixo no rodapé (mobile) -->
+    <div class="simulador-resumo-fixo" id="simuladorResumoFixo" aria-hidden="true">
+        <div class="simulador-resumo-fixo-inner">
+            <div>
+                <span class="simulador-resumo-fixo-label">Setup</span>
+                <strong id="totalSetupFixo">R$ 349,99</strong>
+            </div>
+            <div>
+                <span class="simulador-resumo-fixo-label">Mensal</span>
+                <strong id="totalMensalFixo">R$ 39,99</strong>
+            </div>
+            <a href="https://wa.me/5511997983481?text=Ol%C3%A1!%20Fiz%20uma%20simula%C3%A7%C3%A3o%20no%20site%20NexaWeb." id="btnWhatsAppFixo" class="btn btn-primary btn-small" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="simulador.js"></script>
+</body>
+</html>
