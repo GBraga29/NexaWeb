@@ -270,22 +270,43 @@ section {
 
 .diferenciais-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
 }
 
-.diferenciais-grid .diferencial-card:nth-child(1),
-.diferenciais-grid .diferencial-card:nth-child(2),
-.diferenciais-grid .diferencial-card:nth-child(3) {
+.diferenciais-grid .diferencial-card:nth-child(1) {
+    grid-column: 1;
     grid-row: 1;
 }
 
-.diferenciais-grid .diferencial-card:nth-child(4),
-.diferenciais-grid .diferencial-card:nth-child(5),
-.diferenciais-grid .diferencial-card:nth-child(6) {
+.diferenciais-grid .diferencial-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.diferenciais-grid .diferencial-card:nth-child(3) {
+    grid-column: 1 / -1;
     grid-row: 2;
+    justify-self: center;
+    max-width: calc(50% - 1rem);
+}
+
+.diferenciais-grid .diferencial-card:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.diferenciais-grid .diferencial-card:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.diferenciais-grid .diferencial-card:nth-child(6) {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-self: center;
+    max-width: calc(50% - 1rem);
 }
 
 .diferencial-card {
@@ -698,6 +719,116 @@ section {
     max-height: 120px;
 }
 
+/* Seção Nossos Valores */
+.nossos-valores {
+    background: var(--midnight-void);
+}
+
+.nossos-valores .section-title {
+    margin-bottom: 2.5rem;
+}
+
+.valores-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.valores-bloco-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.valores-paragrafo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.valores-intro {
+    margin-bottom: 2rem;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.valores-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.valores-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--electric-cyan);
+}
+
+.valores-card-central {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: calc(50% - 1rem);
+}
+
+.valores-card-icon {
+    font-size: 3rem;
+    color: var(--electric-cyan);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+}
+
+.valores-card-titulo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--electric-cyan);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+}
+
+.valores-item-num {
+    color: var(--electric-cyan);
+    margin-right: 0.25rem;
+}
+
+.valores-lista-chave {
+    list-style: none;
+    margin: 0.75rem 0 0 0;
+    padding: 0;
+}
+
+.valores-lista-chave li {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+}
+
+.valores-destaque {
+    color: var(--electric-cyan);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
 /* Seção Quem Somos */
 .quem-somos {
     background: var(--midnight-void);
@@ -1062,18 +1193,28 @@ section {
         font-size: 1.5rem;
     }
 
+    .valores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .valores-card-central {
+        max-width: 100%;
+    }
+
     .diferenciais-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
     }
 
     .diferenciais-grid .diferencial-card:nth-child(1),
     .diferenciais-grid .diferencial-card:nth-child(2),
     .diferenciais-grid .diferencial-card:nth-child(3),
     .diferenciais-grid .diferencial-card:nth-child(4),
-    .diferenciais-grid .diferencial-card:nth-child(5) {
+    .diferenciais-grid .diferencial-card:nth-child(5),
+    .diferenciais-grid .diferencial-card:nth-child(6) {
         grid-column: 1;
         grid-row: auto;
+        max-width: none;
+        justify-self: stretch;
     }
 
     .produtos-grid,
