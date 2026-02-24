@@ -213,18 +213,14 @@ const produtosCarousel = () => {
     
     if (!track || cards.length === 0) return;
     
-    // Começar pelo card central (índice 1)
-    let currentIndex = 1;
-    let currentOffset = 0; // valor atual do translateX para uso no arraste
+    // Começar pelo card central no desktop (1); no mobile pelo primeiro (0)
+    let currentIndex = window.innerWidth <= 768 ? 0 : 1;
     const totalCards = cards.length;
     const gapPx = () => parseInt(getComputedStyle(track).gap, 10) || 32;
     const trackPaddingPx = () => {
         const padding = getComputedStyle(track).paddingLeft;
         return parseInt(padding, 10) || 32;
     };
-    
-    // Detectar se é mobile (touch) para habilitar arraste
-    const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
     // Função para calcular o deslocamento centralizando o card
     const updateCarousel = (disableTransition = false) => {
@@ -236,9 +232,7 @@ const produtosCarousel = () => {
         const cardWithGap = cardWidth + gap;
         const trackPadding = trackPaddingPx();
         
-        // Calcular offset para centralizar o card atual
         const offset = (containerWidth / 2) - (cardWidth / 2) - (currentIndex * cardWithGap) - trackPadding;
-        currentOffset = offset;
         
         if (disableTransition) {
             track.style.transition = 'none';
@@ -250,65 +244,47 @@ const produtosCarousel = () => {
             });
         }
         
-        // Atualizar classes active
         cards.forEach((card, index) => {
             card.classList.remove('active');
             if (index === currentIndex) {
                 card.classList.add('active');
             }
         });
+        
+        // Atualizar estado das setas (mobile)
+        const prevBtn = document.getElementById('produtosCarouselPrev');
+        const nextBtn = document.getElementById('produtosCarouselNext');
+        if (prevBtn) {
+            prevBtn.disabled = currentIndex === 0;
+            prevBtn.setAttribute('aria-hidden', currentIndex === 0);
+        }
+        if (nextBtn) {
+            nextBtn.disabled = currentIndex === totalCards - 1;
+            nextBtn.setAttribute('aria-hidden', currentIndex === totalCards - 1);
+        }
     };
     
-    // --- Arraste em dispositivos móveis ---
-    if (isTouchDevice()) {
-        let touchStartX = 0;
-        let touchStartOffset = 0;
-        const minSwipeDistance = 40;
-        
-        const getTouchX = (e) => e.touches ? e.touches[0].clientX : e.clientX;
-        
-        const onDragStart = (e) => {
-            touchStartX = getTouchX(e);
-            touchStartOffset = currentOffset;
-            track.style.transition = 'none';
-        };
-        
-        const onDragMove = (e) => {
-            const x = getTouchX(e);
-            const deltaX = x - touchStartX;
-            const containerWidth = container.offsetWidth;
-            const cardWidth = cards[0].offsetWidth;
-            const gap = gapPx();
-            const cardWithGap = cardWidth + gap;
-            const trackPadding = trackPaddingPx();
-            const maxOffset = (containerWidth / 2) - (cardWidth / 2) - trackPadding;
-            const minOffset = maxOffset - (totalCards - 1) * cardWithGap;
-            let newOffset = touchStartOffset + deltaX;
-            newOffset = Math.min(maxOffset, Math.max(minOffset, newOffset));
-            track.style.transform = `translateX(${newOffset}px)`;
-        };
-        
-        const onDragEnd = (e) => {
-            const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-            const deltaX = x - touchStartX;
-            track.style.transition = '';
-            if (deltaX < -minSwipeDistance && currentIndex < totalCards - 1) {
-                currentIndex++;
-                updateCarousel();
-            } else if (deltaX > minSwipeDistance && currentIndex > 0) {
+    // Setas laterais (uso em mobile)
+    const prevBtn = document.getElementById('produtosCarouselPrev');
+    const nextBtn = document.getElementById('produtosCarouselNext');
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
                 currentIndex--;
                 updateCarousel();
-            } else {
+            }
+        });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalCards - 1) {
+                currentIndex++;
                 updateCarousel();
             }
-        };
-        
-        track.addEventListener('touchstart', onDragStart, { passive: true });
-        track.addEventListener('touchmove', onDragMove, { passive: true });
-        track.addEventListener('touchend', onDragEnd, { passive: true });
+        });
     }
     
-    // Adicionar event listeners para clique nos cards
+    // Clique nos cards
     cards.forEach((card, index) => {
         card.addEventListener('click', () => {
             if (index !== currentIndex) {

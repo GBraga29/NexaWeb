@@ -384,6 +384,45 @@ section {
     margin-bottom: 2rem;
 }
 
+/* Setas do carrossel — visíveis apenas no mobile */
+.produtos-carousel-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: var(--electric-cyan);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.produtos-carousel-arrow .material-icons {
+    font-size: 28px;
+}
+.produtos-carousel-arrow:hover:not(:disabled) {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--electric-cyan);
+    color: var(--white);
+}
+.produtos-carousel-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+.produtos-carousel-arrow--prev {
+    left: 8px;
+}
+.produtos-carousel-arrow--next {
+    right: 8px;
+}
+
 .produtos-carousel-container {
     width: 100%;
     overflow-x: hidden;
@@ -398,7 +437,6 @@ section {
     align-items: center;
     gap: 2rem;
     padding: 0 2rem;
-    touch-action: pan-y; /* permite scroll vertical da página; arraste horizontal no JS */
 }
 
 .produto-card-carousel {
@@ -1256,13 +1294,10 @@ section {
 
     .produtos-carousel-track {
         padding: 0 1rem;
-        cursor: grab;
-        user-select: none;
-        -webkit-user-select: none;
     }
 
-    .produtos-carousel-track:active {
-        cursor: grabbing;
+    .produtos-carousel-arrow {
+        display: flex;
     }
 }
 
