@@ -398,6 +398,7 @@ section {
     align-items: center;
     gap: 2rem;
     padding: 0 2rem;
+    touch-action: pan-y; /* permite scroll vertical da página; arraste horizontal no JS */
 }
 
 .produto-card-carousel {
@@ -1255,6 +1256,13 @@ section {
 
     .produtos-carousel-track {
         padding: 0 1rem;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .produtos-carousel-track:active {
+        cursor: grabbing;
     }
 }
 
