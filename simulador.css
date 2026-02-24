@@ -177,14 +177,20 @@
     color: var(--electric-cyan);
 }
 
-/* Input numérico */
+/* Input numérico (quantidade de páginas) */
 .simulador-input-wrap {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 }
 
 .simulador-input {
     width: 100%;
     max-width: 140px;
+    min-width: 80px;
+    min-height: 48px;
     padding: 0.875rem 1rem;
     font-family: 'Sora', sans-serif;
     font-size: 1.1rem;
@@ -193,6 +199,14 @@
     border: 1px solid rgba(0, 240, 255, 0.25);
     border-radius: 10px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+.simulador-input::-webkit-outer-spin-button,
+.simulador-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .simulador-input:focus {
@@ -205,7 +219,6 @@
     display: block;
     font-size: 0.9rem;
     color: var(--text-light);
-    margin-top: 0.5rem;
 }
 
 /* Sidebar Resumo (sticky) */
@@ -326,7 +339,7 @@
 
 @media (max-width: 768px) {
     .simulador-page {
-        padding-bottom: 100px;
+        padding-bottom: 220px; /* espaço para rolar e ver o quadrado acima da barra fixa */
     }
 
     .simulador-titulo {
@@ -340,6 +353,41 @@
     .simulador-resumo-fixo {
         display: block;
     }
+
+    /* Garantir que o bloco de quantidade de páginas apareça no mobile */
+    .simulador-card {
+        overflow: visible;
+    }
+
+    /* Último card (Páginas Extras): mais margem embaixo para o quadrado ficar visível */
+    .simulador-form-wrap .simulador-card:last-of-type {
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .simulador-input-wrap {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 240, 255, 0.2);
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+
+    .simulador-input {
+        max-width: 120px;
+        min-width: 80px;
+        min-height: 52px;
+        font-size: 1.25rem;
+    }
+
+    .simulador-input-label {
+        font-size: 0.95rem;
+        color: var(--text-light);
+    }
 }
 
 @media (max-width: 480px) {
@@ -351,5 +399,18 @@
         width: 100%;
         order: 3;
         margin-top: 0.5rem;
+    }
+
+    .simulador-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .simulador-input-wrap {
+        padding: 0.875rem 1rem;
+    }
+
+    .simulador-input {
+        min-height: 48px;
+        font-size: 1.1rem;
     }
 }
